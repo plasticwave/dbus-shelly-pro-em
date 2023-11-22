@@ -1,5 +1,5 @@
 # dbus-shelly-1pm-pvinverter
-Integrate Shelly 1PM into Victron Energies Venus OS
+Integrate Shelly Pro EM into Victron Energies Venus OS
 
 ## Purpose
 With the scripts in this repo it should be easy possible to install, uninstall, restart a service that connects the Shelly 1PM to the VenusOS and GX devices from Victron.
@@ -34,11 +34,11 @@ As mentioned above the script is inspired by @fabian-lauer dbus-shelly-3em-smart
 So what is the script doing:
 - Running as a service
 - connecting to DBus of the Venus OS `com.victronenergy.pvinverter.http_{DeviceInstanceID_from_config}`
-- After successful DBus connection Shelly 1PM is accessed via REST-API - simply the /status is called and a JSON is returned with all details
+- After successful DBus connection Shelly Pro EM is accessed via REST-API - simply the /status is called and a JSON is returned with all details
   A sample JSON file from Shelly 1PM can be found [here](docs/shelly1pm-status-sample.json)
 - Serial/MAC is taken from the response as device serial
 - Paths are added to the DBus with default value 0 - including some settings like name, etc
-- After that a "loop" is started which pulls Shelly 1PM data every 750ms from the REST-API and updates the values in the DBus
+- After that a "loop" is started which pulls Shelly Pro EM data every 750ms from the REST-API and updates the values in the DBus
 
 Thats it 😄
 
@@ -56,17 +56,17 @@ After that call the install.sh script.
 
 The following script should do everything for you:
 ```
-wget https://github.com/vikt0rm/dbus-shelly-1pm-pvinverter/archive/refs/heads/main.zip
-unzip main.zip "dbus-shelly-1pm-pvinverter-main/*" -d /data
-mv /data/dbus-shelly-1pm-pvinverter-main /data/dbus-shelly-1pm-pvinverter
-chmod a+x /data/dbus-shelly-1pm-pvinverter/install.sh
-/data/dbus-shelly-1pm-pvinverter/install.sh
+wget https://github.com/plasticwave/dbus-shelly-pro-em/archive/refs/heads/main.zip
+unzip main.zip "dbus-shelly-pro-em-main/*" -d /data
+mv /data/dbus-shelly-pro-em-main /data/dbus-shelly-pro-em
+chmod a+x /data/dbus-shelly-pro-em/install.sh
+/data/dbus-shelly-pro-em/install.sh
 rm main.zip
 ```
 ⚠️ Check configuration after that - because service is already installed an running and with wrong connection data (host, username, pwd) you will spam the log-file
 
 ### Change config.ini
-Within the project there is a file `/data/dbus-shelly-1pm-pvinverter/config.ini` - just change the values - most important is the deviceinstance, custom name and phase under "DEFAULT" and host, username and password in section "ONPREMISE". More details below:
+Within the project there is a file `/data/dbus-shelly-pro-em/config.ini` - just change the values - most important is the deviceinstance, custom name and phase under "DEFAULT" and host, username and password in section "ONPREMISE". More details below:
 
 | Section  | Config vlaue | Explanation |
 | ------------- | ------------- | ------------- |
