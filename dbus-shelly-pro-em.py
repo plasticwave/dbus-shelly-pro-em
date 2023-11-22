@@ -20,8 +20,8 @@ sys.path.insert(1, os.path.join(os.path.dirname(__file__), '/opt/victronenergy/d
 from vedbus import VeDbusService
 
 
-class DbusShellyEMProService:
-  def __init__(self, servicename, paths, productname='Shelly EM Pro', connection='Shelly EM Pro HTTP JSON service'):
+class DbusShellyProEMService:
+  def __init__(self, servicename, paths, productname='Shelly Pro EM', connection='Shelly Pro EM HTTP JSON service'):
     config = self._getConfig()
     deviceinstance = int(config['DEFAULT']['Deviceinstance'])
     customname = config['DEFAULT']['CustomName']
@@ -123,7 +123,7 @@ class DbusShellyEMProService:
 
     # check for response
     if not meter_r:
-        raise ConnectionError("No response from Shelly EM Pro - %s" % (URL))
+        raise ConnectionError("No response from Shelly Pro EM - %s" % (URL))
 
     meter_data = meter_r.json()
 
@@ -141,7 +141,7 @@ class DbusShellyEMProService:
 
     # check for response
     if not meter_r:
-        raise ConnectionError("No response from Shelly EM Pro - %s" % (URL))
+        raise ConnectionError("No response from Shelly Pro EM - %s" % (URL))
 
     meter_data = meter_r.json()
 
@@ -162,7 +162,7 @@ class DbusShellyEMProService:
 
   def _update(self):
     try:
-       #get data from Shelly EM Pro
+       #get data from Shelly Pro EM
        meter_data = self._getShellyData()
 
        config = self._getConfig()
@@ -244,7 +244,7 @@ def main():
       _v = lambda p, v: (str(round(v, 1)) + 'V')
 
       #start our main-service
-      pvac_output = DbusShellyEMProService(
+      pvac_output = DbusShellyProEMService(
         servicename='com.victronenergy.pvinverter',
         paths={
           '/Ac/Energy/Forward': {'initial': None, 'textformat': _kwh}, # energy produced by pv inverter
