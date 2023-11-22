@@ -1,33 +1,26 @@
-# dbus-shelly-1pm-pvinverter
+# dbus-shelly-pro-em
 Integrate Shelly Pro EM into Victron Energies Venus OS
 
 ## Purpose
-With the scripts in this repo it should be easy possible to install, uninstall, restart a service that connects the Shelly 1PM to the VenusOS and GX devices from Victron.
-Idea is inspired on @fabian-lauer project linked below.
+With the scripts in this repo it should be easy possible to install, uninstall, restart a service that connects the Shelly Pro EM to the VenusOS and GX devices from Victron.
+Code is based on @vikt0rm project linked below.
 
 
 
 ## Inspiration
 This project is my first on GitHub and with the Victron Venus OS, so I took some ideas and approaches from the following projects - many thanks for sharing the knowledge:
+- https://github.com/vikt0rm/dbus-shelly-1pm-pvinverter
 - https://github.com/fabian-lauer/dbus-shelly-3em-smartmeter
 - https://shelly-api-docs.shelly.cloud/gen1/#shelly1-shelly1pm
 - https://github.com/victronenergy/venus/wiki/dbus#pv-inverters
 
 ## How it works
 ### My setup
-- 3-Phase installation
-- Shelly 1PM with latest firmware (20220209-094317/v1.11.8-g8c7bb8d)
-  - Measuring AC output of SUN-2000 GTIL on phase L3
-  - Connected to Wifi netowrk "A" with a known IP  
-- Shelly 1PM with latest firmware (20220209-094317/v1.11.8-g8c7bb8d)
-  - Measuring AC output of Envertech EVT-500 and Hoymiles HM-800 on phase L3
-  - Connected to Wifi netowrk "A" with a known IP  
-- Shelly 3EM used as a grid meter
-  - Connected over https://github.com/fabian-lauer/dbus-shelly-3em-smartmeter
-  - Connected to Wifi netowrk "A" with a known IP  
-- Venus OS on Raspberry PI 4 4GB version 1.1 - Firmware v2.84
-  - No other devices from Victron connected
-  - Connected to Wifi netowrk "A"
+- 1-Phase installation
+- Shelly Pro EM with latest firmware (20230705-121922/1.0.99-proem50prod0-g2af075b)
+  - Measuring AC output of Growatt 2000 on phase L1
+  - Connected to Wifi network "A" with a known IP
+
 
 ### Details / Process
 As mentioned above the script is inspired by @fabian-lauer dbus-shelly-3em-smartmeter implementation.
