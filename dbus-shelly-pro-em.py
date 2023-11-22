@@ -168,13 +168,13 @@ class DbusShellyProEMService:
        config = self._getConfig()
        str(config['DEFAULT']['Phase'])
 
-       pvinverter_phase = str(config['DEFAULT']['Phase'])
+       meter_phase = str(config['DEFAULT']['Phase'])
 
        #send data to DBus
        for phase in ['L1', 'L2', 'L3']:
          pre = '/Ac/' + phase
 
-         if phase == pvinverter_phase:
+         if phase == meter_phase:
            power = meter_data['act_power']
            #total = meter_data['aenergy']['total']
            voltage = meter_data['voltage']
@@ -192,8 +192,8 @@ class DbusShellyProEMService:
            self._dbusservice[pre + '/Power'] = 0
            self._dbusservice[pre + '/Energy/Forward'] = 0
 
-       self._dbusservice['/Ac/Power'] = self._dbusservice['/Ac/' + pvinverter_phase + '/Power']
-       self._dbusservice['/Ac/Energy/Forward'] = self._dbusservice['/Ac/' + pvinverter_phase + '/Energy/Forward']
+       self._dbusservice['/Ac/Power'] = self._dbusservice['/Ac/' + meter_phase + '/Power']
+       self._dbusservice['/Ac/Energy/Forward'] = self._dbusservice['/Ac/' + meter_phase + '/Energy/Forward']
 
        #logging
        logging.debug("House Consumption (/Ac/Power): %s" % (self._dbusservice['/Ac/Power']))
